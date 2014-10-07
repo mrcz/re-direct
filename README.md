@@ -6,6 +6,8 @@ regular ones and in image search. A mutation handler is installed so that
 dynamically generated links are washed as well. The script looks at every
 link once, and no other elements, so it is very fast.
 
+<h4>Chrome plugin</h4>
+A chrome plugin is available for free in <a href="https://chrome.google.com/webstore/detail/re-direct/aeecoplkhlfpclbiabnfkjlfkbhpbcjd">the Chrome Webstore</a>
 
 <h4>License</h4>
 
