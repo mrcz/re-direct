@@ -1,6 +1,6 @@
 {
   "name": "re-direct",
-  "version": "1.0.5",
+  "version": "1.1.0.1",
   "author": "Marcus Svensson",
   "description": "Removes the tracking redirects from Google's search results; Copy Link will now work there just like it does everywhere else.",
   "icons": {
@@ -10,7 +10,9 @@
   },
   "content_scripts": [{
       "matches": ["*://*.google.com/*", "*://*.google.ac/*", "*://*.google.com.af/*", "*://*.google.co.ao/*", "*://*.google.as/*", "*://*.google.at/*", "*://*.google.com.au/*", "*://*.google.com.bd/*", "*://*.google.bf/*", "*://*.google.com.bh/*", "*://*.google.bj/*", "*://*.google.com.bn/*", "*://*.google.com.br/*", "*://*.google.bt/*", "*://*.google.co.bw/*", "*://*.google.cd/*", "*://*.google.cg/*", "*://*.google.ci/*", "*://*.google.de/*", "*://*.google.dj/*", "*://*.google.dk/*", "*://*.google.dz/*", "*://*.google.com.ec/*", "*://*.google.ee/*", "*://*.google.com.eg/*", "*://*.google.fi/*", "*://*.google.ga/*", "*://*.google.ge/*", "*://*.google.gf/*", "*://*.google.gg/*", "*://*.google.com.gh/*", "*://*.google.gm/*", "*://*.google.gr/*", "*://*.google.com.gt/*", "*://*.google.com.hk/*", "*://*.google.hn/*", "*://*.google.hr/*", "*://*.google.ht/*", "*://*.google.hu/*", "*://*.google.co.id/*", "*://*.google.iq/*", "*://*.google.im/*", "*://*.google.io/*", "*://*.google.it/*", "*://*.google.co.ke/*", "*://*.google.co.ke/*", "*://*.google.co.ke/*", "*://*.google.co.ke/*", "*://*.google.kg/*", "*://*.google.com.kw/*", "*://*.google.com.lc/*", "*://*.google.lk/*", "*://*.google.co.ls/*", "*://*.google.lt/*", "*://*.google.com.ly/*", "*://*.google.me/*", "*://*.google.mg/*", "*://*.google.com.mm/*", "*://*.google.mn/*", "*://*.google.com.mt/*", "*://*.google.mv/*", "*://*.google.com.mx/*", "*://*.google.co.mz/*", "*://*.google.com.na/*", "*://*.google.com.nf/*", "*://*.google.com.ni/*", "*://*.google.com.np/*", "*://*.google.nr/*", "*://*.google.com.om/*", "*://*.google.com.ph/*", "*://*.google.com.pg/*", "*://*.google.com.py/*", "*://*.google.com.py/*", "*://*.google.com.py/*", "*://*.google.com.py/*", "*://*.google.com.py/*", "*://*.google.com.py/*", "*://*.google.com.py/*", "*://*.google.com.py/*", "*://*.google.com.py/*", "*://*.google.rw/*", "*://*.google.se/*", "*://*.google.si/*", "*://*.google.com.sl/*", "*://*.google.sn/*", "*://*.google.so/*", "*://*.google.td/*", "*://*.google.co.th/*", "*://*.google.tm/*", "*://*.google.tn/*", "*://*.google.com.tr/*", "*://*.google.tt/*", "*://*.google.co.tz/*", "*://*.google.co.ug/*", "*://*.google.co.uk/*", "*://*.google.co.uz/*", "*://*.google.com.vc/*", "*://*.google.co.vi/*", "*://*.google.com.vn/*", "*://*.google.vu/*", "*://*.google.ws/*", "*://*.google.org/*", "*://*.google.net/*"],
-      "js": ["re-direct.js"]
+      "js": ["re-direct.min.js"]
   }],
+  "permissions": ["storage"],
+  "options_page": "settings.html",
   "manifest_version": 2
 }
