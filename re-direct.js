@@ -15,10 +15,22 @@
       cleanLink(elems[i++]);
   }());
 
-  new MutationObserver(function(mutations) {
+  var observer = new MutationObserver(function(mutations) {
+    observer.disconnect();
     mutations.forEach(function(mrec) {
       cleanLink(mrec.target);
     });
-  }).observe(d, { attributes: true, subtree: true, attributeFilter: ['href'] });
+    startObserving();
+  });
+
+  function startObserving() {
+    observer.observe(d, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ['href']
+    });
+  }
+
+  startObserving();
 
 }(document));
