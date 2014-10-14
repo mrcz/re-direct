@@ -1,11 +1,14 @@
 (function(d) {
   'use strict';
 
-  function cleanLink(el) {
-    var data = el.dataset;
-    if (data && data.href && el.pathname === '/url' && el.href !== data.href) {
-      el.href = data.href;
-      el.onmousedown = null;
+  var hideReferrer = true;
+
+  function cleanLink(a) {
+    var data = a.dataset;
+    if (data && data.href && '/url' === a.pathname) {
+      a.href = data.href;
+      if (hideReferrer)
+        a.rel = 'noreferrer';
     }
   }
 
