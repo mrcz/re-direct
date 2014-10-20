@@ -1,6 +1,6 @@
 {
   "name": "re-direct",
-  "version": "1.1.0.1",
+  "version": "1.1.0.2",
   "author": "Marcus Svensson",
   "description": "Removes the tracking redirects from Google's search results; Copy Link will now work there just like it does everywhere else.",
   "icons": {
