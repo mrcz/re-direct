@@ -9,6 +9,12 @@ link once, and no other elements, so it is very fast.
 <h4>Chrome plugin</h4>
 A chrome plugin is available for free in <a href="https://chrome.google.com/webstore/detail/re-direct/aeecoplkhlfpclbiabnfkjlfkbhpbcjd">the Chrome Webstore</a>
 
+<h4>Building the minimized version</h4>
+To build the minimized version that is distributed in the plugin, use
+<a href="https://developers.google.com/closure/compiler/">Google's closure compiler</a>
+
+    $ java -jar compiler.jar --compilation_level ADVANCED_OPTIMIZATIONS --js re-direct.js
+
 <h4>License</h4>
 
 Copyright (c) 2014 Marcus Svensson
