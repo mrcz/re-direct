@@ -9,15 +9,17 @@
       var data = a.dataset;
       if (data && data.href && '/url' === a.pathname) {
         a.href = data.href;
-        if (hideReferrer)
+        if (hideReferrer) {
           a.rel = 'noreferrer';
+        }
       }
     }
 
     (function() {
-      var i = 0, elems = d.getElementsByTagName('a');
-      while (i<elems.length)
+      var i = 0, elems = d.querySelectorAll('a[data-href]');
+      while (i < elems.length) {
         cleanLink(elems[i++]);
+      }
     }());
 
     var observer = new MutationObserver(function(mutations) {
@@ -39,4 +41,4 @@
     startObserving();
   });
 
-}(document));
+}(document.body));
