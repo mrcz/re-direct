@@ -1,8 +1,8 @@
 {
-  "name": "re-direct",
-  "version": "1.1.1.0",
+  "name": "Fix Copy Link Address",
+  "version": "1.2.0.0",
   "author": "Marcus Svensson",
-  "description": "Removes the tracking redirects from Google's search results; Copy Link will now work there just like it does everywhere else.",
+  "description": "Fix Copy Link Address in Google's search results - both regular and image search.",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
