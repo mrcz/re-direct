@@ -8,24 +8,25 @@
     const cleanLink = a => {
       var data = a.dataset
       if (a.pathname === '/url') {
-        if (hideReferrer) {
-          a.rel = 'noreferrer'
-        }
         if (data && data.href) {
-          a.href = data.href
+          updateLink(a, data.href)
         } else {
           let url = (new URLSearchParams(a.href)).get('url')
           if (url) {
-            a.href = url
+            updateLink(a, url)
           }
         }
       }
 
       if (data && data.href && a.pathname === '/url') {
         a.href = data.href
-        if (hideReferrer) {
-          a.rel = 'noreferrer'
-        }
+      }
+    }
+
+    const updateLink = (a, href) => {
+      a.href = href
+      if (hideReferrer) {
+        a.rel = 'noreferrer'
       }
     }
 
