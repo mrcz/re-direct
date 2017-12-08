@@ -1,44 +1,52 @@
-(function(d) {
-  'use strict';
+/* global chrome, MutationObserver */
+((d) => {
+  'use strict'
 
-  chrome['storage']['local'].get('hideReferrer', function(settings) {
+  chrome.storage.local.get('hideReferrer', (settings) => {
+    const hideReferrer = (settings['hideReferrer'] !== false)
 
-    var hideReferrer = (false !== settings['hideReferrer']);
-
-    function cleanLink(a) {
-      var data = a.dataset;
-      if (data && data.href && '/url' === a.pathname) {
-        a.href = data.href;
+    const cleanLink = a => {
+      var data = a.dataset
+      if (a.pathname === '/url') {
         if (hideReferrer) {
-          a.rel = 'noreferrer';
+          a.rel = 'noreferrer'
+        }
+        if (data && data.href) {
+          a.href = data.href
+        } else {
+          let url = (new URLSearchParams(a.href)).get('url')
+          if (url) {
+            a.href = url
+          }
+        }
+      }
+
+      if (data && data.href && a.pathname === '/url') {
+        a.href = data.href
+        if (hideReferrer) {
+          a.rel = 'noreferrer'
         }
       }
     }
 
-    (function() {
-      var i = 0, elems = d.querySelectorAll('a[data-href]');
-      while (i < elems.length) {
-        cleanLink(elems[i++]);
-      }
-    }());
+    for (let e of d.getElementsByTagName('a')) {
+      cleanLink(e)
+    }
 
-    var observer = new MutationObserver(function(mutations) {
-      observer.disconnect();
-      mutations.forEach(function(mrec) {
-        cleanLink(mrec.target);
-      });
-      startObserving();
-    });
+    const observer = new MutationObserver(mutations => {
+      observer.disconnect()
+      mutations.forEach((mrec) => { cleanLink(mrec.target) })
+      observe()
+    })
 
-    function startObserving() {
+    const observe = () => {
       observer.observe(d, {
         attributes: true,
         subtree: true,
         attributeFilter: ['href']
-      });
+      })
     }
 
-    startObserving();
-  });
-
-}(document.body));
+    observe()
+  })
+})(document)

@@ -1,27 +1,32 @@
 <html>
-	<head>
-		<link rel="stylesheet" href="css/chrome_shared.css"/>
-		<style>
-        /* Style for this page */
-        body>.main-container{max-width:800px;margin:50px auto}
-        header{max-width:700px;margin:0 auto 50px auto;font-size:48px}
-        .fork-github{position:absolute;top:0;right:0;width:164px;height:164px}
-        .social-buttons{margin-top:-30px}
-        .fr{float:right}
-    </style>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fix Copy Link Address Settings</title>
+    <script src="js/settings.js" async></script>
+    <link rel="stylesheet" href="css/chrome_shared.css"/>
+    <link rel="stylesheet" href="css/settings.css"/>
+  </head>
 
-	<body>
-		<div class="main-container">
-		  <h1>re-direct settings</h1>
-		  <div class="checkbox">
-        <label>
+  <body>
+    <div class="main-container">
+      <h1>Fix Copy Link Address</h1>
+      <h2>Settings</h2>
+      <div class="checkbox">
+        <label for="hide-referrer">
           <input type="checkbox" id="hide-referrer"/>
           <span>Hide referrer from target sites (recommended)</span>
         </label>
-	    </div>
-		</div>
+      </div>
 
-		<script src="js/settings.js"></script>
-	</body>
+      <h2>Having trouble?</h2>
+      <div class="text">
+        <p>If the script doesn't work on your local Google domain, just leave feedback saying what domain it doesn't work for and I'll fix it in a future release.</p>
+      </div>
+
+      <h2>Feedback</h2>
+      <p>You can leave feedback and rate the extension
+      <a href ="https://chrome.google.com/webstore/detail/fix-copy-link-address/aeecoplkhlfpclbiabnfkjlfkbhpbcjd">in the Chrome webstore</a>.
+    </div>
+
+  </body>
 </html>

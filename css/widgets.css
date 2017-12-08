@@ -26,7 +26,6 @@ input[type='radio'] {
       inset 0 1px 2px rgba(255, 255, 255, 0.75);
   color: #444;
   font: inherit;
-  margin: 0 1px 0 0;
   text-shadow: 0 1px 0 rgb(240, 240, 240);
 }
 
@@ -39,7 +38,6 @@ select {
 /* The following platform-specific rule is necessary to get adjacent
    * buttons, text inputs, and so forth to align on their borders while also
    * aligning on the text's baselines. */
-  padding-bottom: 1px;
 }
 
 :-webkit-any(button,
@@ -65,21 +63,9 @@ html[dir='rtl'] select {
 }
 
 input[type='checkbox'] {
-  bottom: 2px;
   height: 13px;
-  position: relative;
-  vertical-align: middle;
   width: 13px;
-}
-
-input[type='radio'] {
-  /* OVERRIDE */
-  border-radius: 100%;
-  bottom: 3px;
-  height: 15px;
-  position: relative;
   vertical-align: middle;
-  width: 15px;
 }
 
 /* TODO(estade): add more types here? */
@@ -120,24 +106,11 @@ input[type='search']::-webkit-textfield-decoration-container {
 
 input[type='checkbox']:checked::before {
   -webkit-user-select: none;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAcklEQVQY02NgwA/YoJgoEA/Es4DYgJBCJSBeD8SboRinBiYg7kZS2IosyQ/Eakh8LySFq4FYHFlxGRBvBOJYqMRqJMU+yApNkSRAeC0Sux3dfSCTetE0wKyXxOWhMKhTYIr9CAUXyJMzgLgBagBBgDPGAI2LGdNt0T1AAAAAAElFTkSuQmCC');
-  background-size: 100% 100%;
-  content: '';
+  content: '✔';
+  /*content: '✓';*/
   display: block;
   height: 100%;
   width: 100%;
-}
-
-input[type='radio']:checked::before {
-  background-color: #666;
-  border-radius: 100%;
-  bottom: 3px;
-  content: '';
-  display: block;
-  left: 3px;
-  position: absolute;
-  right: 3px;
-  top: 3px;
 }
 
 /* Hover **********************************************************************/
@@ -237,39 +210,10 @@ input:disabled:-webkit-any([type='password'],
   -webkit-transition: border-color 200ms;
   /* We use border color because it follows the border radius (unlike outline).
    * This is particularly noticeable on mac. */
-  border-color: rgb(77, 144, 254);
+  border-color: #8c5014;
   outline: none;
 }
 
-/* Link buttons ***************************************************************/
-
-.link-button {
-  -webkit-box-shadow: none;
-  background: transparent none;
-  border: none;
-  color: rgb(17, 85, 204);
-  cursor: pointer;
-  /* Input elements have -webkit-small-control which can override the body font.
-   * Resolve this by using 'inherit'. */
-  font: inherit;
-  margin: 0;
-  padding: 0 4px;
-}
-
-.link-button:hover {
-  text-decoration: underline;
-}
-
-.link-button:active {
-  color: rgb(5, 37, 119);
-  text-decoration: underline;
-}
-
-.link-button[disabled] {
-  color: #999;
-  cursor: default;
-  text-decoration: none;
-}
 
 /* Checkbox/radio helpers ******************************************************
  *
@@ -289,12 +233,6 @@ input:disabled:-webkit-any([type='password'],
   display: -webkit-inline-box;
   padding-bottom: 7px;
   padding-top: 7px;
-}
-
-:-webkit-any(.checkbox, .radio) label input ~ span {
-  -webkit-margin-start: 0.6em;
-  /* Make sure long spans wrap at the same horizontal position they start. */
-  display: block;
 }
 
 :-webkit-any(.checkbox, .radio) label:hover {
