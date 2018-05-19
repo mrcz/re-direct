@@ -1,53 +1,44 @@
-/* global chrome, MutationObserver */
-((d) => {
-  'use strict'
+"use strict";
 
-  chrome.storage.local.get('hideReferrer', (settings) => {
-    const hideReferrer = (settings['hideReferrer'] !== false)
+chrome.storage.local.get("hideReferrer", settings => {
+  const hideReferrer = (settings["hideReferrer"] !== false);
 
-    const cleanLink = a => {
-      var data = a.dataset
-      if (a.pathname === '/url') {
-        if (data && data.href) {
-          updateLink(a, data.href)
-        } else {
-          let url = (new URLSearchParams(a.href)).get('url')
-          if (url) {
-            updateLink(a, url)
-          }
-        }
-      }
-
-      if (data && data.href && a.pathname === '/url') {
-        a.href = data.href
+  const cleanLink = a => {
+    if (a.pathname === "/url") {
+      const href = getOriginalUrl(a);
+      if (href) {
+        updateLink(a, href);
       }
     }
+  };
 
-    const updateLink = (a, href) => {
-      a.href = href
-      if (hideReferrer) {
-        a.rel = 'noreferrer'
-      }
+  const getOriginalUrl = a =>
+    a.dataset && a.dataset.data && a.dataset.data.href || (new URLSearchParams(a.href)).get("url");
+
+  const updateLink = (a, href) => {
+    a.href = href;
+    if (hideReferrer) {
+      a.rel = "noreferrer";
     }
+  };
 
-    for (let e of d.getElementsByTagName('a')) {
-      cleanLink(e)
-    }
+  for (const a of d.getElementsByTagName("a")) {
+    cleanLink(a);
+  }
 
-    const observer = new MutationObserver(mutations => {
-      observer.disconnect()
-      mutations.forEach((mrec) => { cleanLink(mrec.target) })
-      observe()
-    })
+  const observer = new MutationObserver(mutations => {
+    observer.disconnect();
+    mutations.forEach(mrec => cleanLink(mrec.target));
+    observe();
+  });
 
-    const observe = () => {
-      observer.observe(d, {
-        attributes: true,
-        subtree: true,
-        attributeFilter: ['href']
-      })
-    }
+  const observe = () => {
+    observer.observe(document, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ["href"]
+    });
+  };
 
-    observe()
-  })
-})(document)
+  observe();
+});

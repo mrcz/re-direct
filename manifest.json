@@ -1,6 +1,6 @@
 {
   "name": "Fix Copy Link Address",
-  "version": "1.3.0.0",
+  "version": "1.3.1.0",
   "author": "Marcus Svensson",
   "description": "Fix Copy Link Address in Google’s search results - both regular and image search.",
   "icons": {
