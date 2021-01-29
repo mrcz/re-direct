@@ -1,9 +1,9 @@
 "use strict";
 
-chrome.storage.local.get("hideReferrer", settings => {
-  const hideReferrer = (settings["hideReferrer"] !== false);
+chrome.storage.local.get("hideReferrer", (settings) => {
+  const hideReferrer = (settings.hideReferrer !== false);
 
-  const cleanLink = a => {
+  const cleanLink = (a) => {
     if (a.pathname === "/url") {
       const href = getOriginalUrl(a);
       if (href) {
@@ -12,8 +12,8 @@ chrome.storage.local.get("hideReferrer", settings => {
     }
   };
 
-  const getOriginalUrl = a =>
-    a.dataset && a.dataset.data && a.dataset.data.href || (new URLSearchParams(a.href)).get("url");
+  const getOriginalUrl = (a) =>
+    a?.dataset?.data?.href || (new URLSearchParams(a.href)).get("url");
 
   const updateLink = (a, href) => {
     a.href = href;
@@ -22,13 +22,13 @@ chrome.storage.local.get("hideReferrer", settings => {
     }
   };
 
-  for (const a of d.getElementsByTagName("a")) {
+  for (const a of document.getElementsByTagName("a")) {
     cleanLink(a);
   }
 
-  const observer = new MutationObserver(mutations => {
+  const observer = new MutationObserver((mutations) => {
     observer.disconnect();
-    mutations.forEach(mrec => cleanLink(mrec.target));
+    mutations.forEach((mrec) => cleanLink(mrec.target));
     observe();
   });
 
